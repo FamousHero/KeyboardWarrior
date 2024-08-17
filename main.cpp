@@ -1,4 +1,5 @@
 #include <chrono>
+#include <iostream>
 
 #include <SFML/Graphics.hpp>
 #include "sfml_testing.cpp"
@@ -7,17 +8,13 @@ int main()
 {
     sf::RenderWindow window(sf::VideoMode(1800, 600), "Keyboard Warrior");
 
-    const auto timeToEndScreen{std::chrono::seconds(2)}; // Time it should take for something to go from left-side to right-side
-
-    const auto startTime{std::chrono::steady_clock::now()};
-
-    float inc = 0.f;
+    const float timeToEndScreen{4.f}; // Time it should take for something to go from left-side to right-side
+    auto startTime{std::chrono::steady_clock::now()};
     float x = 0.f;
+    
     while (window.isOpen())
     {
-        if(x >= 1800.f){inc = -5.f;}
-        else if(x<=0){inc = 5.f;}
-        x += inc;
+
         sf::Event event;
         while (window.pollEvent(event))
         {
@@ -27,8 +24,25 @@ int main()
 
         window.clear();
         const auto currentTime{std::chrono::steady_clock::now()};
-        const auto percentage = (currentTime - startTime) / timeToEndScreen; // Perentage of screen traveled
-        Test::drawCircle(100.f, x, 600/2, window);
+        std::chrono::duration<float, std::milli> elapsedTime = currentTime - startTime; // Ticks elapsed in microseconds
+        elapsedTime = elapsedTime / 1000.f;
+        auto percentage = elapsedTime.count() / timeToEndScreen; // Perentage of screen traveled
+        // If at the edge of screen, reset start time and subtract percentage from 1
+        float inc = 0.f;
+
+        inc = (x == 0.f)? percentage: 1.f - percentage;
+
+        if (percentage >= 1.f) {
+            startTime = std::chrono::steady_clock::now();
+            if (x == 0.f) {
+                x = 1.f;
+            }
+            else if (x == 1.f) {
+                x = 0.f;
+            }
+        }
+        std::cout << percentage << "\n";
+        Test::drawCircle(100.f, 1800.f*inc, 600/2, window);
         Test::drawText("./coolvetica rg.otf", window);
         window.display();
     }
