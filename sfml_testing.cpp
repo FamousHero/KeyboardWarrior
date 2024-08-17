@@ -12,7 +12,7 @@ class Test {
     public:
         // Shape is an abstract class, in order to return any shape and 
         // call its virtual methods we must return a pointer.
-        static sf::CircleShape CreateCircle(float radius, float x, float y) {
+        static void drawCircle(float radius, float x, float y, sf::RenderWindow& window) {
                 
                 sf::CircleShape circle(radius);
 
@@ -20,7 +20,9 @@ class Test {
                 circle.setOrigin(radius, radius);
                 circle.setPosition(x, y);
 
-                return circle;
+                window.draw(circle);
+
+                return;
             }
         // Couldn't get it to draw to window if I just returned the text
         // So draw within function instead of outside
