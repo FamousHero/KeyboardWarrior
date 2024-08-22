@@ -3,8 +3,7 @@
 #include "../Include/KeyQueue.h"
 
 GameState::GameState::GameState()
-	:m_score(0), m_lives(0), m_combo(0), m_level(0),
-	m_start_time(std::chrono::steady_clock::now())
+	:m_score(0), m_lives(0), m_combo(0), m_level(0)
 {
 }
 int GameState::GameState::removeLive()
@@ -30,7 +29,3 @@ void GameState::GameState::resetCombo()
 	m_combo = 0;
 }
 
-uint32_t GameState::GameState::getLevel()
-{
-	return 0;
-}

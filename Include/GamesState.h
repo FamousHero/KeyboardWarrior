@@ -1,6 +1,8 @@
 #pragma once
 
 #include <cstdint>
+#include <chrono>
+#include "KeyQueue.h"
 
 namespace GameState {
 	class GameState

@@ -3,11 +3,6 @@
 #include <queue>
 #include <chrono>
 
-int KeyQueue::KeyQueue::getSpeed()
-{
-    return 0;
-}
-
 char KeyQueue::KeyQueue::popKey()
 {
     char top_key = m_key_queue.front();
@@ -16,10 +11,10 @@ char KeyQueue::KeyQueue::popKey()
     return top_key;
 }
 
-std::chrono::time_point<std::chrono::duration<MILLISECONDS>> KeyQueue::KeyQueue::popKeyTiming()
+std::chrono::time_point<std::chrono::duration<float, std::milli>> KeyQueue::KeyQueue::popKeyTiming()
 {
 
-    std::chrono::time_point<std::chrono::duration<MILLISECONDS>> top_key_timing;
+    std::chrono::time_point<std::chrono::duration<float, std::milli>> top_key_timing;
     top_key_timing = m_time_queue.front();
     m_time_queue.pop();
 
