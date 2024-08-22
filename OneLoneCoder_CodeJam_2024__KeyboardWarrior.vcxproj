@@ -133,8 +133,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\GamesState.cpp" />
+    <ClCompile Include="Source\InputHandler.cpp" />
+    <ClCompile Include="Source\KeyQueue.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="sfml_testing.cpp" />
+    <ClCompile Include="Source\sfml_testing.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Include\GamesState.h" />
+    <ClInclude Include="Include\InputHandler.h" />
+    <ClInclude Include="Include\KeyQueue.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

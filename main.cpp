@@ -2,8 +2,11 @@
 #include <iostream>
 
 #include <SFML/Graphics.hpp>
-#include "sfml_testing.cpp"
+#include "Source/sfml_testing.cpp"
 
+#include "Include/GamesState.h"
+#include "Include/InputHandler.h"
+#include "Include/KeyQueue.h"
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(1800, 600), "Keyboard Warrior");
