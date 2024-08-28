@@ -33,21 +33,23 @@ class Test {
         //   sf::Text text = Test::createText(fontFile) //name of old func, no window param since drawing manually
         //   ...
         //  window.draw(text);
-        static void drawText(std::string fontFile, sf::RenderWindow& window) {
+        static void drawText(std::string fontFile, float x, float y, sf::RenderWindow& window, std::string txt = "") {
             sf::Text text;
             sf::Font font;
             if (!font.loadFromFile(fontFile)) {
                 throw;
             }
-            text.setPosition(0.f, 0.f);
+            text.setPosition(0.f, y);
 
             text.setFont(font);
-            text.setString("Keyboard Warrior");
-            text.setString(text.getString() + " Concatenation");
+            txt == ""? 
+                text.setString("Keyboard Warrior") : 
+                text.setString(txt);
+            // text.setString(text.getString() + " Concatenation");
             text.setCharacterSize(24);
 
             text.setFillColor(sf::Color::White);
-
+            text.setPosition(x,y);
             text.setLetterSpacing(5.f);
             
             window.draw(text);

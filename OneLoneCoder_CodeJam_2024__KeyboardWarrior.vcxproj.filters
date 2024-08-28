@@ -24,10 +24,13 @@
     <ClCompile Include="Source\GamesState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\KeyQueue.cpp">
+    <ClCompile Include="Source\InputHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\InputHandler.cpp">
+    <ClCompile Include="Source\Key.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\LinkedList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,10 +38,13 @@
     <ClInclude Include="Include\GamesState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Include\KeyQueue.h">
+    <ClInclude Include="Include\InputHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Include\InputHandler.h">
+    <ClInclude Include="Include\Key.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\LinkedList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
