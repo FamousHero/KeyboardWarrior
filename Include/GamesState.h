@@ -30,6 +30,9 @@ public:
 	int addLife();
 
 	int setLevel(int newLevel);
+	void setScore(uint32_t score){m_score = score;};
+	void setCombo(uint32_t combo) { m_combo = combo; };
+
 
 	void resetCombo();
 

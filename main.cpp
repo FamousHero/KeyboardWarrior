@@ -77,6 +77,11 @@ int main()
             ++y_inc;
             head = head->next;
         }
+
+        game_state.setScore(1800.f*inc);
+        game_state.setCombo(50.f * inc);
+
+
         game_state.drawGUI(window);
 
         window.display();

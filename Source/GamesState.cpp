@@ -1,9 +1,11 @@
 #include "../Include/GamesState.h"
 #include "../Include/Key.h"
 
+#include <string>
+
 
 GameState::GameState()
-	:m_score(0), m_lives(0), m_combo(0), m_level(0)
+	:m_score(0), m_lives(3), m_combo(0), m_level(0)
 {
 }
 
@@ -46,15 +48,18 @@ void GameState::drawGUI(sf::RenderWindow& window)
 	sf::Text combo;
 
 
-	score.setString("Score: 120");
+	std::string score_string = std::to_string(m_score);
+	score.setString("Score: "+ score_string);
 	setTextDefaults(score, font);
 	score.setPosition(1600.f, 20.f);
 
-	lives.setString("Lives: 3");
+	std::string lives_string = std::to_string(m_lives);
+	lives.setString("Lives: "+ lives_string);
 	setTextDefaults(lives, font);
 	lives.setPosition(1600.f/2, 20.f);
 
-	combo.setString(" x31");
+	std::string combo_string = std::to_string(m_combo);
+	combo.setString(" x"+combo_string);
 	setTextDefaults(combo, font);
 	combo.setPosition(100.f, 20.f);
 
