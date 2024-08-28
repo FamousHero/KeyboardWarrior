@@ -41,6 +41,10 @@ public:
 	
 	Node* getHead(){return m_key_linked_list.getHead(); };
 	void addKeyNode(Key key, STEADY_CLOCK_DURATION end_time);
+	void drawGUI(sf::RenderWindow& window);
+
+private:
+	void setTextDefaults(sf::Text& text_t, sf::Font& font_t);
 };
 
 

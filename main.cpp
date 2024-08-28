@@ -77,6 +77,7 @@ int main()
             ++y_inc;
             head = head->next;
         }
+        game_state.drawGUI(window);
 
         window.display();
 
