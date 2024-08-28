@@ -17,6 +17,8 @@ int main()
     auto startTime{std::chrono::steady_clock::now()};
     float x = 0.f;
 
+    // FOR ANY FUNCITON THAT USES THIS, PASS BY REFERENCE!!!!
+    // TREAT SAME AS WINDOW
     GameState game_state;
     InputHandler input_handler;
     
@@ -34,20 +36,30 @@ int main()
     {
 
         sf::Event event;
+
+        const auto currentTime{std::chrono::steady_clock::now()};
+
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
                 window.close();
             else if (event.type == sf::Event::KeyPressed) {
                 if(event.key.code > sf::Keyboard::A && event.key.code < sf::Keyboard::Z){
-                    input_handler.setCurrentKey(event.key.code + 'A');
-                    std::cout << input_handler.getCurrentKey();
+                    input_handler.setCurrentKey(event.key.code + 'A', game_state);
+                    input_handler.setTimeOut(currentTime+std::chrono::milliseconds(250)); // 2.5/10ths of a second
+                    std::cout << game_state.getCurrentKey();
+
                 }
             }
         }
+        if (game_state.getCurrentKey() != '\0') {
+            if (currentTime > input_handler.getTimeOut()) {
+                input_handler.setCurrentKey('\0', game_state);
+            }
+
+        }
 
         window.clear();
-        const auto currentTime{std::chrono::steady_clock::now()};
         std::chrono::duration<float, std::milli> elapsedTime = currentTime - startTime; // Ticks elapsed in microseconds
         elapsedTime = elapsedTime / 1000.f;
         auto percentage = elapsedTime.count() / timeToEndScreen; // Perentage of screen traveled

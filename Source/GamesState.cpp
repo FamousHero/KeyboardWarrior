@@ -5,7 +5,7 @@
 
 
 GameState::GameState()
-	:m_score(0), m_lives(3), m_combo(0), m_level(0)
+	:m_score(0), m_lives(3), m_combo(0), m_level(0), m_current_key('\0')
 {
 }
 
@@ -43,10 +43,11 @@ void GameState::drawGUI(sf::RenderWindow& window)
 	sf::Font font;
 	if(!font.loadFromFile("./coolvetica rg.otf"))
 		throw;
+		
 	sf::Text score;
 	sf::Text lives;
 	sf::Text combo;
-
+	sf::Text current_key;
 
 	std::string score_string = std::to_string(m_score);
 	score.setString("Score: "+ score_string);
@@ -66,6 +67,13 @@ void GameState::drawGUI(sf::RenderWindow& window)
 	window.draw(score);
 	window.draw(lives);
 	window.draw(combo);
+	if (m_current_key) {
+		std::string curr_key_string = std::string() + m_current_key;
+		current_key.setString(curr_key_string);
+		setTextDefaults(current_key, font);
+		current_key.setPosition(100.f, 450.f);
+		window.draw(current_key);
+	}
 }
 
 void GameState::setTextDefaults(sf::Text& text_t, sf::Font& font_t)

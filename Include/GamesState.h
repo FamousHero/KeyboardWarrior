@@ -22,6 +22,7 @@ private:
 	// Queue does not work. 
 	// LL allows draw for each key.
 	LinkedList m_key_linked_list;
+	char m_current_key;
 
 public:
 	GameState();
@@ -32,7 +33,7 @@ public:
 	int setLevel(int newLevel);
 	void setScore(uint32_t score){m_score = score;};
 	void setCombo(uint32_t combo) { m_combo = combo; };
-
+	void setCurrentKey(char key_t){m_current_key= key_t;};
 
 	void resetCombo();
 
@@ -41,7 +42,8 @@ public:
 	auto getTime(){return m_start_time;};
 	uint32_t getCombo(){return m_combo;};
 	uint32_t getLevel(){return m_level;}; // also used to set level := getLevel() +/- 1
-	
+	char getCurrentKey(){return m_current_key;};
+
 	Node* getHead(){return m_key_linked_list.getHead(); };
 	void addKeyNode(Key key, STEADY_CLOCK_DURATION end_time);
 	void drawGUI(sf::RenderWindow& window);

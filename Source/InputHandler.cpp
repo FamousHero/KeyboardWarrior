@@ -3,13 +3,13 @@
 #include "../Include/GamesState.h"
 
  InputHandler::InputHandler()
-	:m_current_key('\0')
 {
 }
 
-void  InputHandler::setCurrentKey(char key_t)
+void  InputHandler::setCurrentKey(char key_t, GameState& gs)
 {
-	m_current_key = key_t;
+	gs.setCurrentKey(key_t);
 }
+
 
 
