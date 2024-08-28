@@ -48,7 +48,7 @@ int main()
         // If at the edge of screen, reset start time and subtract percentage from 1
         float inc = 0.f;
 
-        inc = (x == 0.f)? percentage: 1.f - percentage;
+        inc = (x == 1.f)? percentage: 1.f - percentage;
 
         if (percentage >= 1.f) {
             startTime = std::chrono::steady_clock::now();
