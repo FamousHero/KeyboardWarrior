@@ -38,6 +38,12 @@ int main()
         {
             if (event.type == sf::Event::Closed)
                 window.close();
+            else if (event.type == sf::Event::KeyPressed) {
+                if(event.key.code > sf::Keyboard::A && event.key.code < sf::Keyboard::Z){
+                    input_handler.setCurrentKey(event.key.code + 'A');
+                    std::cout << input_handler.getCurrentKey();
+                }
+            }
         }
 
         window.clear();

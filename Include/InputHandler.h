@@ -10,6 +10,7 @@ class InputHandler
 public:
 	InputHandler();
 	void setCurrentKey(char key_t);
+	char getCurrentKey(){return m_current_key;};
 	//bool isMatch(KeyQueue kq, GameState gs); no more kq
 			
 };
